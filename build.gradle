@@ -1,0 +1,42 @@
+plugins {
+    id 'org.springframework.boot' version '3.1.0'
+    id 'com.vaadin' version '24.0.0'
+    id 'io.spring.dependency-management' version '1.1.0'
+    id 'java'
+}
+
+group = 'com.kodilla'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'com.vaadin:vaadin-spring-boot-starter:24.0.0'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+
+    implementation 'org.springframework.boot:spring-boot-starter-json'
+}
+
+vaadin {
+    productionMode = false
+    nodeVersion = 'v20.18.0'
+}
+
+tasks.named('bootJar') {
+    enabled = false
+}
+
+tasks.named('jar') {
+    enabled = true
+}
+
+test {
+    useJUnitPlatform()
+}
